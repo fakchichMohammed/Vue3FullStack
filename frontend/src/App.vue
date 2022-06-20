@@ -21,6 +21,12 @@ function logout() {
         <li v-if="!user.user.authenticated">
           <router-link :to="{ name: 'signup' }">Sign up</router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'about' }">About</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'haphazardly' }">Haphazardly</router-link>
+        </li>
         <li v-if="user.user.authenticated">
           <router-link :to="{ name: 'me' }">My profile</router-link>
         </li>

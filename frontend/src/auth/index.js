@@ -5,6 +5,7 @@ import { ref } from "vue";
 const API_URL = "http://localhost:3001/";
 const LOGIN_URL = API_URL + "api/user/login";
 const SIGNUP_URL = API_URL + "api/user/signup";
+const QOUTES_URL = API_URL + "api/todos";
 
 let user = ref({
   authenticated: false,
@@ -13,6 +14,10 @@ let user = ref({
   tokenTimer: "",
   authStatusListener: "",
   error: "",
+});
+
+const quote = ref({
+  todos: [],
 });
 
 function signup(creds, redirect) {
@@ -50,7 +55,7 @@ function login(creds, redirect) {
         const expirationDate = new Date(
           now.getTime() + expiresInDuration * 1000
         );
-        console.log('expera',expirationDate);
+        console.log("expera", expirationDate);
         saveAuthData(token, expirationDate, response.data.userId);
         // router.navigate(["/"]);
         if (redirect) {
@@ -101,6 +106,26 @@ function saveAuthData(token, expirationDate, userId) {
   localStorage.setItem("userId", userId);
 }
 
+function addQuote(creds) {
+  axios
+    .post(QOUTES_URL, creds)
+    .then(function (response) {
+    })
+    .catch(function (err) {
+      user.value.error = err.response.data;
+    });
+}
+
+async function getQuotes() {
+  try {
+    const res = await axios.get(QOUTES_URL);
+    quote.value = res.data.todos;
+    console.log('rer',res.data.todos);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 export default {
   user,
   login,
@@ -108,4 +133,6 @@ export default {
   logout,
   checkAuth,
   getAuthHeader,
+  addQuote,
+  getQuotes,
 };

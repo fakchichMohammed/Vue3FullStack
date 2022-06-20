@@ -30,6 +30,9 @@ function logout() {
         <li v-if="user.user.authenticated">
           <router-link :to="{ name: 'me' }">My profile</router-link>
         </li>
+        <li v-if="user.user.authenticated">
+          <router-link :to="{ name: 'myquotes' }">My quotes</router-link>
+        </li>
         <!-- <li v-if="user.user.authenticated">
           <p>Welcome</p>
         </li> -->

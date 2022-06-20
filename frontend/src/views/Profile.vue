@@ -21,8 +21,8 @@ function saveProfile() {
             class="rounded-circle mt-5"
             src="https://i.imgur.com/0eg0aG0.jpg"
             width="90"
-          /><span class="font-weight-bold">John Doe</span
-          ><span class="text-black-50">john_doe12@bbb.com</span
+          /><span class="font-weight-bold">Mohammed fakchich</span
+          ><span class="text-black-50">jmed@med.com</span
           ><span>United States</span>
         </div>
       </div>
